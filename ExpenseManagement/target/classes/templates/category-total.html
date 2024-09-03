@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Category Wise Total</title>
+</head>
+<body>
+
+<h2>Select Category</h2>
+
+<form th:action="@{/expenses/category-total}" method="get">
+    <label for="category">Choose a Category:</label>
+    <select id="category" name="categoryName">
+        <option th:each="category : ${categories}" 
+                th:value="${category.name}" 
+                th:text="${category.name}">Category</option>
+    </select>
+    <button type="submit">Get Total</button>
+</form>
+
+<!-- Display the selected category and its total -->
+<div th:if="${categoryWiseTotal != null}">
+    <h3>Total for [[${categoryWiseTotal.categoryName}]]: [[${categoryWiseTotal.totalAmount}]]</h3>
+</div>
+
+</body>
+</html>

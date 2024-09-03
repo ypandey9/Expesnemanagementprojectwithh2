@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+<title>Expenses</title>
+</head>
+<body>
+<form th:action="@{/expenses/update/{id}(id=${expense.id})}" method="post" th:object="${expense}">
+<input type="hidden" name="_method" value="put">
+<input type="text" th:field="*{description}" placeholder="description" required>
+<input type="text" th:field="*{amount}" placeholder="amount" required>
+<input type="text" th:field="*{date}" placeholder="date" required>
+<input type="text" th:field="*{category}" placeholder="category" required>
+<button type="submit">Update</button>
+</form>
+</body>
+</html>

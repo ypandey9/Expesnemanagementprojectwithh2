@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+<title>Add Expense</title>
+</head>
+<body>
+	<h1>Add Expense</h1>
+	<form th:action="@{/expenses/add}" method="post" th:object="${newExpense}">
+
+		Description : <input type="text" th:field="*{description}" placeholder="Enter Description" required><br>
+		Amount : <input type="number" th:field="*{amount}" placeholder="enter amount" required><br>
+		Date : <input type="date" th:field="*{date}" placeholder="select date" required><br>
+		Category : <select th:field="*{category}" id="category" required>
+		<option value="" selected="selected">Select Category</option>
+			<option th:each="category:${categories}" th:value="${category.id}" 
+			th:text="${category.name}">
+			</option>
+		</select>
+		<br>
+		<button type="submit">Submit</button>
+	</form>
+</body>
+</html>

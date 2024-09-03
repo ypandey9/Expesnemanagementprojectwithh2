@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Category Wise Expenses</title>
+</head>
+<body>
+    <h1>Category Wise Total Expenses</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Total Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="item : ${categoryWiseData}">
+                <td th:text="${item.categoryName}"></td>
+                <td th:text="${item.totalAmount}"></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <br>
+    <br>
+    <br>
+    Grand Total : <span th:text="${grandTotal}"></span>
+</body>
+</html>

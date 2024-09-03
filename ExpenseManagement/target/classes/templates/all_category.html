@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+<title>Expenses</title>
+</head>
+<body>
+<h1>Categories</h1>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Name</th>
+</tr>
+</thead>
+
+<tbody>
+<tr th:each="category:${categories}">
+<td th:text="${category.id}">1</td>
+<td th:text="${category.name}">grocery</td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+<a href="/categories/showform">Add New Category</a>
+
+<a href="/expenses/showaddform">Add Expense</a>
+</body>
+</html>

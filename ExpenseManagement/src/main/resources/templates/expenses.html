@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+<title>Expenses</title>
+<style>
+form {
+display:inline;
+}
+</style>
+</head>
+<body>
+	<h1>Expenses</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Description</th>
+				<th>Amount</th>
+				<th>Date</th>
+				<th>Category</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr th:each="expense:${expenses}">
+				<td th:text="${expense.id}">1</td>
+				<td th:text="${expense.description}">tea leaf</td>
+				<td th:text="${expense.amount}">100</td>
+				<td th:text="${expense.date}">28/08/2024</td>
+				<td th:text="${expense.category.name}">1</td>
+				<td>
+					<form th:action="@{/expenses/update/form/{id}(id=${expense.id})}"
+						method="get">
+						<button type="submit">Update</button>
+					</form>
+					
+					<form th:action="@{/expenses/delete/{id}(id=${expense.id})}"
+						method="post">
+						<button type="submit">Delete</button>
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<br> Total Expense :
+	<h2 th:text="${total!=null?total:0.0}">Total Expense</h2>
+	
+	<a href="/expenses/showaddform">Add New Expense</a>
+	<br>
+	<a href="/expenses/show-filter-form">Filter Expense</a>
+	<br>
+	<a href="/categories/showform">Add New Category</a>
+	<br>
+</body>
+</html>
